@@ -16,7 +16,7 @@ mainOS.bin:main.o lib.o $(OBJS)
 	gcc -c $(OPTION) $< -o $@
 main.o:mainos/main.c
 	gcc -c $(OPTION) mainos/main.c -o main.o
-lib.o:mainos/lib.s
-	nasm -f win32 -o lib.o mainos/lib.s
+lib.o:asm/lib.s
+	nasm -f win32 -o lib.o asm/lib.s
 clean:
-	rm boot.bin setup main.o mainOS.bin
+	rm boot.bin *.o
