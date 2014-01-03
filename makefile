@@ -6,6 +6,7 @@ boots:boot/boot.s
 setup:boot/setup.s
 	nasm -f bin -o setup boot/setup.s
 
+t
 mainOS.bin:mainos/main.c
 	gcc -c -m32 mainos/main.c -o main.o
 	ld -Tlink.ld -o mainOS.bin main.o 
