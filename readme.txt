@@ -1,4 +1,0 @@
-ssstest
-
-lan moi
-Gvjbjjhhhh
