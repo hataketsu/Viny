@@ -29,4 +29,4 @@ mov al,'.'
 	int 10h
 mov ax,0x1200
 jmp ax
-times 512-($-$$) db 0
+times 512-($-$$) db 0x0
