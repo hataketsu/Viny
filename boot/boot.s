@@ -1,5 +1,6 @@
 org 0x7c00
-
+mov ax,0x900
+mov ss,ax
 Reset:
 	mov	ah, 0					;function
 	mov	dl, 0					;driver
@@ -11,7 +12,7 @@ Reset:
 	mov		bx, 0x1000
 Read:
 	mov		ah, 0x02			;function
-	mov		al, 1				;numbers of sector
+	mov		al, 5				;numbers of sector
 	mov		ch, 0				;track
 	mov		cl, 2				;sector
 	mov		dh, 0				;head
