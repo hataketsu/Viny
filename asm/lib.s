@@ -2,6 +2,7 @@ segment .text
 global put_s
 global put_ch
 global get_key
+global repeat
 put_ch:
 	pop ebp
 	xor ax,ax
@@ -23,11 +24,8 @@ put_s:
 	endloop:
 	ret
 get_key:
-	waitForKey: mov   ah,01H
-                        int   16H
-                        jnz   gotKey       ;jmp if key is ready
-                        jmp   waitForKey   ;loop back and check for a key
-            gotKey:     mov ah, 00H        ;key is ready, get it
-
-                        int 16H            ;now process the key
+        mov ah, 00H        ;key is ready, get it
+        int 16H            ;now process the key
+		cmp ah,0x48
+		jne get_key
 	ret
