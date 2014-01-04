@@ -1,12 +1,11 @@
 segment .text
 global put_s
 global put_ch
-global get_key
-global ReadLoop
+global getch
 put_ch:
 	pop ebp
-	xor ax,ax
-	pop ax
+	pop eax
+	and eax,0xff
 	push ebp
 	mov ah,0xe
 	int 10h
@@ -23,21 +22,11 @@ put_s:
 		jmp l
 	endloop:
 	ret
-get_key:
 
-		mov ah,1
-		int 16h
-		
-        mov ah, 00H        ;key is ready, get it
-        int 16H            ;now process the key
-		cmp ah,0x48
-		jne get_key
-	ret
-ReadLoop:       mov     ah, 0           ;Read Key opcode
-                int     16h
-                cmp     al, 0           ;Special function?
-                jz      ReadLoop        ;If so, don't echo this keystroke
-                mov ah,0xe
-				int 10h
-                cmp     al, 0dh         ;Carriage return (ENTER)?
-                jne     ReadLoop
+getch:
+	xor bp,bp
+	mov    ah, 0           ;Read Key opcode
+    int     16h
+	;mov ah,0
+	and eax,0xff
+    ret

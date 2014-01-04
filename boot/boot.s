@@ -1,6 +1,7 @@
 org 0x7c00
-mov ax,0x900
+mov ax,0x500
 mov ss,ax
+mov sp, 800h 
 Reset:
 	mov	ah, 0					;function
 	mov	dl, 0					;driver
@@ -12,7 +13,7 @@ Reset:
 	mov		bx, 0x1000
 Read:
 	mov		ah, 0x02			;function
-	mov		al, 5				;numbers of sector
+	mov		al, 3				;numbers of sector
 	mov		ch, 0				;track
 	mov		cl, 2				;sector
 	mov		dh, 0				;head
@@ -25,7 +26,7 @@ mov ax,0x1000
 jmp ax
 
 test:
-	mov al,'.'
+	mov al,'*'
 	mov ah,0xe
 	int 10h
 	ret

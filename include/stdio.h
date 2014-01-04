@@ -3,5 +3,5 @@
 extern void put_ch(char);
 extern void put_s(char*);
 extern void die(char*);
-extern char get_key();
+extern char getch();
 #endif
