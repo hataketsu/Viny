@@ -1,15 +1,7 @@
 segment .text
 global put_s
-global put_ch
 global getch
-put_ch:
-	pop ebp
-	pop eax
-	and eax,0xff
-	push ebp
-	mov ah,0xe
-	int 10h
-	ret
+
 put_s:
 	pop ebp
 	pop esi
@@ -27,6 +19,5 @@ getch:
 	xor bp,bp
 	mov    ah, 0           ;Read Key opcode
     int     16h
-	;mov ah,0
-	and eax,0xff
+	and ax,0xff
     ret

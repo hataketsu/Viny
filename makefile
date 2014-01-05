@@ -1,4 +1,4 @@
-OPTION=-m32 -Iinclude
+OPTION=-m32 -masm=intel -Iinclude
 LIBS=$(wildcard lib/*.c)
 tmp:=$(shell ls lib)
 OBJS=$(tmp:%.c=%.o)

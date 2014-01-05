@@ -1,8 +1,10 @@
 
-__asm__(".code16\n");
-__asm__("jmpl $0x0000, $mainOS\n");
+asm(".code16\n");
+asm("lea ax,mainOS\n");
+asm("jmp ax");
 #include<stdio.h>
 #include<string.h>
+void n(int);
 void process(char* cmd){
 	put_s(cmd); 
 }
@@ -12,10 +14,8 @@ void mainOS() {
 	//put_s("\r\nKernel loaded.\r\nNow we run in realmode with programs from C, may be C++\r\n"); 
 	//put_s("Author:Trinh Hung Anh\r\n");
 	//put_s("Command promt started\r\n");
-	put_n(44);
-	__asm__("hlt");
-	put_n(44);
-	//__asm__("hlt");
+	//put_ch('5');
+	n(8);
 	//put_ch('4');
 	//put_ch('4');
 	//put_s("Command promt started\r\n>>>");
